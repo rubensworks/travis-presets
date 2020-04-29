@@ -5,19 +5,29 @@ which can be [imported into your Travis file](https://docs.travis-ci.com/user/bu
 
 ## Node.JS Presets
 
-This presets makes sure that:
-* all important Node.JS versions are tested
-* npm is cached
-* `build`, `lint`, `test` scripts are executed
-* `coveralls` scripts is executed after success
+### [`node-base.yml`](https://github.com/rubensworks/travis-presets/blob/master/node-base.yml)
+
+This preset defines a testing matrix with all major LTS Node versions, and enables npm caching.
+
+**`travis.yml`:**
+
+```yml
+import: rubensworks/travis-presets:node-base.yml@master
+# ... other stuff
+```
+
+### [`node.yml`](https://github.com/rubensworks/travis-presets/blob/master/node.yml)
+
+This preset extends from `node-base.yml`,
+and additionally executes `build`, `lint`, `test` scripts,
+and runs the `coveralls` script after success.
+
+**`travis.yml`:**
 
 ```yml
 import: rubensworks/travis-presets:node.yml@master
 # ... other stuff
 ```
-
-If the script execution is not desired, then `rubensworks/travis-presets:node-base.yml@master` can be imported instead,
-which just defines Node.JS versions and caches npm.
 
 ## License
 This software is written by [Ruben Taelman](http://rubensworks.net/).
